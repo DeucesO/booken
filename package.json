@@ -1,0 +1,20 @@
+{
+  "name": "booken",
+  "description": "App dev project for CS degree",
+  "repository": {
+      "type": "git",
+      "url": "https://github.com/DeucesO/booken"
+  },
+  "license": "MIT",
+  "readme": "README.md",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node ./config/scripts/www"
+  },
+  "dependencies": {
+    "debug": "^2.2.0",
+    "express": "^4.13.4",
+    "pug": "^2.0.0-alpha6"
+  }
+}
