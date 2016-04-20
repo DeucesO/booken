@@ -3,11 +3,17 @@ var path = require('path');
 var morgan = require('morgan');
 var bodyParser = require('body-parser');
 var methodOverride = require('method-override');
-var mongoose = require('mongoose');
+var session = require('express-session');
 
-var database = require('./config/database');
+var mongoose = require('mongoose');
+var passport = require('passport');
 
 var app = express();
+
+var configDB = require('./config/database');
+mongoose.connect(configDB.url);
+
+require('./config/passport')(passport);
 
 // view engine setup
 app.set('views',path.join(__dirname, '/public/views'));
@@ -19,9 +25,24 @@ app.use(bodyParser.urlencoded({ extended: false}))
 app.use(bodyParser.json())
 app.use(methodOverride());
 
-mongoose.connect(database.url);
+app.use(session({ secret: 'oliver' }));
+app.use(passport.initialize());
+app.use(passport.session());
 
-require('./app/route-config')(app);
+app.use(function (req, res, next) {
+  req.models = {};
+  next();
+});
+
+app.use(function (req, res, next) {
+  if (req.user)
+  {
+    res.locals.user = req.user;
+  }
+  next();
+})
+
+require('./app/route-config')(app, passport);
 require('./app/error-catching')(app);
 
 module.exports = app;

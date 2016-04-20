@@ -1,0 +1,14 @@
+doctype html
+html(lang="en")
+    head
+        title= title
+        link(rel='stylesheet', href='/stylesheets/style.css')
+    body
+        if (user)
+            p you are logged in as #{user.username}
+            a(href='/login/logout') Logout
+        else
+            a(href='/login') Login
+            br
+            a(href='/register') Register
+        block content
