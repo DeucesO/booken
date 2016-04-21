@@ -16,6 +16,10 @@ describe('User visits Login page', function () {
     const browser = new Browser();
     
     before(function () {
+        browser.visit('/account/register')
+            .fill('username', 'test-login')
+            .fill('password', 'test123');
+        browser.pressButton('register');
         return browser.visit('/account/login');
     })
     
@@ -23,8 +27,8 @@ describe('User visits Login page', function () {
         
         before(function () {
             browser
-                .fill('username', 'Oliver')
-                .fill('password', 'Goldlion')
+                .fill('username', 'test-login')
+                .fill('password', 'test123')
             return browser.pressButton('login');
         })
         
