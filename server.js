@@ -11,7 +11,7 @@ var passport = require('passport');
 var app = express();
 
 var configDB = require('./config/database');
-mongoose.connect(configDB.url);
+mongoose.connect(configDB.url(app.get('env')));
 
 require('./config/passport')(passport);
 
