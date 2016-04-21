@@ -10,7 +10,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "nodemon ./config/scripts/www",
+    "start": "node ./config/scripts/www",
     "test": "mocha tests/**/*.js"
   },
   "dependencies": {
