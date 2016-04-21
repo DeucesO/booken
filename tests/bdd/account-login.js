@@ -9,7 +9,7 @@ chai.should();
 
 const Browser = require('zombie');
 
-Browser.localhost('booken.kabi.co', 3000);
+Browser.localhost('*.kabi.co', 3000);
 
 describe('User visits Login page', function () {
     
