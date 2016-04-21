@@ -9,14 +9,14 @@ chai.should();
 
 const Browser = require('zombie');
 
-Browser.localhost('*.kabi.co', 3000);
+Browser.localhost('Booken.kabi.co', 3000);
 
-describe('User visits Login page', function () {
+describe('User visits Register page', function () {
     
     const browser = new Browser();
     
     before(function () {
-        return browser.visit('/account/login');
+        return browser.visit('/account/register');
     })
     
     describe('submits form', function () {
@@ -25,7 +25,7 @@ describe('User visits Login page', function () {
             browser
                 .fill('username', 'test-login')
                 .fill('password', 'test123')
-            return browser.pressButton('login');
+            return browser.pressButton('register');
         })
         
         it('should be successful', function () {

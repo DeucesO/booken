@@ -22,16 +22,24 @@
 			"outDir": null
 		},
 		{
-			"name": "Attach",
+			"name": "Test",
 			"type": "node",
-			"request": "attach",
-			"port": 5858,
-			"address": "localhost",
-			"restart": false,
+			"request": "launch",
+			"program": "/usr/local/bin/_mocha",
+			"stopOnEntry": false,
+			"args": ["tests/**/*.js"],
+			"cwd": "${workspaceRoot}",
+			"preLaunchTask": null,
+			"runtimeExecutable": null,
+			"runtimeArgs": [
+				"--nolazy"
+			],
+			"env": {
+				"NODE_ENV": "development"
+			},
+			"externalConsole": false,
 			"sourceMaps": false,
-			"outDir": null,
-			"localRoot": "${workspaceRoot}",
-			"remoteRoot": null
-		}
+			"outDir": null
+		}	
 	]
 }
