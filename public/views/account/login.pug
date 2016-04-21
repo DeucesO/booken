@@ -2,7 +2,7 @@ extends ../shared/layout.pug
 
 block content
     h1 Login Page
-    form(name='login', action='/login', method='post')
+    form(name='login', action='/account/login', method='post')
         input(type='text', name='username')
         input(type='password', name='password')
         br

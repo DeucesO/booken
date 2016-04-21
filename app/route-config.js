@@ -3,6 +3,5 @@
 module.exports = function (app) {
     
     app.use('/', require('./routes'));
-    app.use('/login', require('./routes/login'));
-    app.use('/register', require('./routes/register'));
+    app.use('/account', require('./routes/account'));
 }

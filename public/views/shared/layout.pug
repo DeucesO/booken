@@ -6,9 +6,9 @@ html(lang="en")
     body
         if (user)
             p you are logged in as #{user.username}
-            a(href='/login/logout') Logout
+            a(href='/account/logout') Logout
         else
-            a(href='/login') Login
+            a(href='/account/login') Login
             br
-            a(href='/register') Register
+            a(href='/account/register') Register
         block content
