@@ -6,8 +6,10 @@ const Browser = require('zombie');
 
 Browser.localhost('booken.kabi.co', 3000);
 
-before(function () {
-    return Account.register(new Account({ username: 'test-login'}), 'test123', function () {});
+before(function (done) {
+    Account.register(new Account({ username: 'test-login'}), 'test123', function () {
+        return done();
+    });
 })
 
 describe('User visits Login page', function () {
