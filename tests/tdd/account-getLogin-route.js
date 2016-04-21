@@ -5,12 +5,12 @@ var sinonChai = require('sinon-chai');
 chai.use(sinonChai);
 chai.should();
 
-describe('Login Index route', function() {
+describe('Account getLogin route', function() {
     it('calls the render function', function() {
-        var login = require('../../app/routes/login/login.controller');
+        var account = require('../../app/routes/account/account.controller');
         var response = {};
         response.render = sinon.stub();
-        login.index({}, response);
+        account.getLogin({}, response);
         
         response.render.should.have.been.calledOnce;
     })
