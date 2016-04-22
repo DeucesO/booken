@@ -2,6 +2,7 @@
 
 var passport = require('passport');
 var Account = require('../../models/account');
+var Town = require('../../models/town');
 
 module.exports = {
     
@@ -19,7 +20,9 @@ module.exports = {
     },
     
     getRegister: function (req, res) {
-        res.render('account/register', { title: 'Booken Register' });
+        Town.find({}, function (err, towns) {
+            res.render('account/register', { title: 'Booken Register', towns: towns });            
+        })
     },
     
     register: function (req, res) {

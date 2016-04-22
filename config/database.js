@@ -43,4 +43,11 @@ function seed () {
     Account.register(new Account({ username: 'admin'}), 'admin', function () {
         console.log('admin account created');
     });
+    
+    var Town = require('../app/models/town');
+    var towns = ['Derby', 'London', 'Manchester'];
+    towns.forEach(function (town) {
+        var entry = new Town({ name: town });
+        entry.save();
+    })
 }
