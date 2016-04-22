@@ -1,0 +1,17 @@
+{
+  "name": "booken",
+  "description": "App dev project for CS degree",
+  "main": "",
+  "license": "MIT",
+  "homepage": "https://github.com/DeucesO/booken",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jade-bootstrap": "*"
+  }
+}
