@@ -3,7 +3,6 @@ var path = require('path');
 var morgan = require('morgan');
 var bodyParser = require('body-parser');
 var methodOverride = require('method-override');
-var session = require('express-session');
 
 var mongoose = require('mongoose');
 var passport = require('passport');
@@ -25,7 +24,6 @@ app.use(bodyParser.urlencoded({ extended: false}))
 app.use(bodyParser.json())
 app.use(methodOverride());
 
-app.use(session({ secret: 'oliver' }));
 app.use(passport.initialize());
 app.use(passport.session());
 
