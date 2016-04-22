@@ -1,0 +1,1 @@
+web: node ./config/scripts/www
