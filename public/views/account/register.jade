@@ -6,8 +6,8 @@ block content
         h2.form-signin-heading Please Enter Your Details Below
         input.form-control(type='text', name='username', placeholder='Username', required='', autofocus='')
         input.form-control(type='password', name='password', placeholder='Password', required='')
-        select.form-control(name='towns')
+        select.form-control(name='town', required='')
             option(value='' diabled selected hidden) Select your town
             each town in towns
-                option(value=town.name) #{town.name}
+                option(value=town) #{town.name}
         button.btn.btn-lg.btn-primary.btn-block(type='submit', name='register') Register

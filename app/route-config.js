@@ -4,4 +4,5 @@ module.exports = function (app) {
     
     app.use('/', require('./routes'));
     app.use('/account', require('./routes/account'));
+    app.use('/lend', require('./routes/lend'));
 }

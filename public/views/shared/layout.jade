@@ -1,4 +1,5 @@
 extends ../../components/jade-bootstrap/_bootstrap
+include mixins
 append styles
     link(href='../../css/site.css', rel='stylesheet')
 block body
@@ -13,12 +14,12 @@ block body
                 a.navbar-brand(href='#') Booken
             #navbar.navbar-collapse.collapse
                 ul.nav.navbar-nav
-                    li.active
+                    li
                         a(href='/') Home
                     li
-                        a(href='#') About
+                        a(href='/lend') Lend
                     li
-                        a(href='#') Contact
+                        a(href='#') About
                 ul.nav.navbar-nav.navbar-right
                     if user
                         li 

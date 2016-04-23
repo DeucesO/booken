@@ -1,0 +1,9 @@
+extends ../shared/layout.jade
+
+block content
+    h1 Lend Page
+    form.form-search(name='book-search', action='/lend/search', method='post')
+        h2.form-search-heading Please enter the books ISBN
+        input.form-control(type='text', name='isbn', placeholder='Book ISBN', required='', autofocus='')
+        button.btn.btn-lg.btn-primary.btn-block(type='submut', name='search') Search
+        

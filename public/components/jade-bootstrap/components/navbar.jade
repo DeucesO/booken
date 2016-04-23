@@ -20,10 +20,6 @@ mixin navbar(name, id, style, href)
 mixin nav_item(href, active)
 	li(class=active): a( href=href )
 		block
-		
-mixin nav_item_right(href, active)
-	li(class=["navbar-right", active]): a( href=href )
-		block
 
 mixin nav_item_dropdown(href, active)
 	li(class=["dropdown", active])
