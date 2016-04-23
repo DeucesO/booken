@@ -26,7 +26,8 @@ describe('User visits Register page', function () {
         before(function () {
             browser
                 .fill('username', 'test-register')
-                .fill('password', 'test123');
+                .fill('password', 'test123')
+                .select('town', 'Derby');
             return browser.pressButton('register');
         })
         
