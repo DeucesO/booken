@@ -1,6 +1,14 @@
 mixin book(book)
     div.well.book
         div.row
+            div.col-md-12
+                h3.book-title= book.title            
+                p= book.authors[0]
+                p= book.publishedDate
+
+mixin book-lend(book)
+    div.well.book
+        div.row
             div.col-md-8
                 h3.book-title= book.title            
                 p= book.authors[0]
@@ -13,3 +21,7 @@ mixin book(book)
 mixin book-list(books)
     each book in books
         +book(book)
+        
+mixin book-list-lend(books)
+    each book in books
+        +book-lend(book)
