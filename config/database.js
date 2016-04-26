@@ -40,9 +40,7 @@ function dropCreate () {
 
 function seed () {
     var Account = require('../app/models/account');
-    Account.register(new Account({ username: 'admin'}), 'admin', function () {
-        console.log('admin account created');
-    });
+
     
     var Town = require('../app/models/town');
     var towns = ['Derby', 'London', 'Manchester'];
@@ -50,4 +48,8 @@ function seed () {
         var entry = new Town({ name: town });
         entry.save();
     })
+    
+    Account.register(new Account({ username: 'admin', lending: [] }), 'admin', function () {
+        console.log('admin account created');
+    });
 }

@@ -2,6 +2,7 @@
 
 var googleBooks = require('google-books-search');
 var Book = require('../../models/book');
+var Account = require('../../models/account');
 
 module.exports = {
     
@@ -21,9 +22,17 @@ module.exports = {
     },
     
     add: function (req, res) {
-        var bookToLend = new Book({ isbn: isbn, owner: req.user._id })
-        bookToLend.save(function (err) {
-            res.redirect('/');
+        var bookToLend = new Book({ 
+            isbn: req.body.isbn, 
+            owner: req.user._id 
+        });
+        bookToLend.save(function (err, book) {
+            Account.findById(req.user._id, function (err, user) {
+                user.lending.push(book);
+                user.save(function (err) {
+                    res.redirect('/account/profile');
+                });
+            });
         });
     }
 }

@@ -8,5 +8,6 @@ router.post('/login', passport.authenticate('local'), controller.login);
 router.get('/logout', controller.logout);
 router.get('/register', controller.getRegister);
 router.post('/register', controller.register);
+router.get('/profile', controller.profile);
 
 module.exports = router;

@@ -9,5 +9,5 @@ block content
         select.form-control(name='town', required='')
             option(value='' diabled selected hidden) Select your town
             each town in towns
-                option(value=town) #{town.name}
+                option(value=town._id) #{town.name}
         button.btn.btn-lg.btn-primary.btn-block(type='submit', name='register') Register
