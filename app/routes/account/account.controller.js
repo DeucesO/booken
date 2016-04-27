@@ -40,7 +40,7 @@ module.exports = {
     },
     
     profile: function(req, res) {
-        var googleResults = []        
+        var googleResultsLending = [];
         Account
             .findOne({ _id: req.user._id })
             .populate('lending')
@@ -48,7 +48,7 @@ module.exports = {
                 async.forEachOf(user.lending, function(book, index, callback) {
                     googleBooks.search(book.isbn, { field: 'isbn' }, function (err, result) {
                         if (result) {
-                            googleResults.push(result[0]);                            
+                            googleResultsLending.push(result[0]);                            
                         }
                         callback();
                     })

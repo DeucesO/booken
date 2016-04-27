@@ -1,0 +1,11 @@
+extends ../shared/layout.jade
+
+block content
+    h1 Borrow Page
+    form.form-search(name='book-search', action='/borrow/search', method='post')
+        h2.form-search-heading Please choose a town
+        select.form-control(name='town', required='')
+            option(value='' diabled selected hidden) Select your town
+            each town in towns
+                option(value=town._id) #{town.name}
+        button.btn.btn-lg.btn-primary.btn-block(type='submit', name='search') Search

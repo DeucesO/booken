@@ -1,5 +1,5 @@
 var express = require('express');
-var controller = require('./lend.controller');
+var controller = require('./borrow.controller');
 var router = express.Router();
 
 router.use(function (req, res, next) {
