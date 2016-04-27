@@ -41,9 +41,10 @@ module.exports = {
     
     profile: function(req, res) {
         var googleResultsLending = [];
+        var googleResultsBorrowing = [];
         Account
             .findOne({ _id: req.user._id })
-            .populate('lending')
+            .populate('lending borrowing')
             .exec(function (err, user) {
                 async.forEachOf(user.lending, function(book, index, callback) {
                     googleBooks.search(book.isbn, { field: 'isbn' }, function (err, result) {
@@ -53,7 +54,16 @@ module.exports = {
                         callback();
                     })
                 }, function (err) {
-                    res.render('account/profile', { title: 'Booken Profile', booksLending: googleResults })
+                    async.forEachOf(user.borrowing, function (book, index, callback) {
+                        googleBooks.search(book.isbn, { field: 'isbn' }, function (err, result) {
+                            if (result) {
+                                googleResultsBorrowing.push(result[0]);
+                            }
+                            callback();
+                        })
+                    }, function (err) {
+                        res.render('account/profile', { title: 'Booken Profile', booksLending: googleResultsLending, booksBorrowing: googleResultsBorrowing })                        
+                    })
                 }) 
             })
     }

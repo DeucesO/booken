@@ -27,7 +27,7 @@ mixin book-borrow(book)
                 p= book.publishedDate
             div.col-md-4
                 form(action='/borrow/add', method='post')
-                    input(type='hidden', name='book', value=book.book._id)
+                    input(type='hidden', name='bookId', value=book.book._id)
                     button.btn.btn-lg.btn-primary(type='submit', name='borrow') Borrow
                 
 mixin book-list(books)

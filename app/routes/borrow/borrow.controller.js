@@ -39,12 +39,12 @@ module.exports = {
     
     add: function (req, res) {
         var bookToBorrow;
-        Book.findById(req.body.book._Id, function (err, book) {
+        Book.findById(req.body.bookId, function (err, book) {
             bookToBorrow = book;
-        })
-        req.user.borrowing.push(bookToBorrow);
-        req.user.save(function (err) {
-            res.redirect('/account/profile');
+            req.user.borrowing.push(bookToBorrow);
+            req.user.save(function (err, user) {
+                res.redirect('/account/profile');
+            })
         })
     }
 }
