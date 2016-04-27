@@ -20,9 +20,12 @@ module.exports = {
             .find({})
             .populate({
                 path: 'owner',
-                match: { town: req.body.town }
+                populate: { path: 'town' }
             })
             .exec(function (err, books) {
+                books = books.filter(function (book) {
+                    return book.owner.town._id == req.body.town 
+                })
                 async.forEachOf(books, function(book, index, callback) {
                     googleBooks.search(book.isbn, { field: 'isbn' }, function (err, result) {
                         if (result) {
