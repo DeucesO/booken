@@ -24,7 +24,7 @@ module.exports = {
             })
             .exec(function (err, books) {
                 books = books.filter(function (book) {
-                    return book.owner.town._id == req.body.town 
+                    return book.owner.town._id == req.body.town && !book.borrower 
                 })
                 async.forEachOf(books, function(book, index, callback) {
                     googleBooks.search(book.isbn, { field: 'isbn' }, function (err, result) {
@@ -46,7 +46,27 @@ module.exports = {
             bookToBorrow = book;
             req.user.borrowing.push(bookToBorrow);
             req.user.save(function (err, user) {
-                res.redirect('/account/profile');
+                bookToBorrow.borrower = user._id;
+                bookToBorrow.save(function (err) {
+                    res.redirect('/account/profile');    
+                })
+            })
+        })
+    },
+    
+    remove: function (req, res) {
+        var borrowedBook;
+        Book.findById(req.body.bookId, function (err, book) {
+            borrowedBook = book;
+            var i = req.user.borrowing.indexOf(borrowedBook._id);
+            if (i != -1) {
+                req.user.borrowing.splice(i, 1);
+            }
+            req.user.save(function (err, user) {
+                borrowedBook.borrower = null;
+                borrowedBook.save(function (err) {
+                    res.redirect('/account/profile');
+                })
             })
         })
     }

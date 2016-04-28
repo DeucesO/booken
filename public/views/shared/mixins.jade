@@ -29,6 +29,18 @@ mixin book-borrow(book)
                 form(action='/borrow/add', method='post')
                     input(type='hidden', name='bookId', value=book.book._id)
                     button.btn.btn-lg.btn-primary(type='submit', name='borrow') Borrow
+                    
+mixin book-unborrow(book)
+    div.well.book
+        div.row
+            div.col-md-8
+                h3.book-title= book.title            
+                p= book.authors[0]
+                p= book.publishedDate
+            div.col-md-4
+                form(action='/borrow/remove', method='post')
+                    input(type='hidden', name='bookId', value=book.book._id)
+                    button.btn.btn-lg.btn-primary(type='submit', name='unborrow') Unborrow
                 
 mixin book-list(books)
     each book in books
@@ -41,3 +53,7 @@ mixin book-list-lend(books)
 mixin book-list-borrow(books)
     each book in books
         +book-borrow(book)
+        
+mixin book-list-unborrow(books)
+    each book in books
+        +book-unborrow(book)

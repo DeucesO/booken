@@ -13,5 +13,6 @@ router.use(function (req, res, next) {
 router.get('/', controller.index);
 router.post('/search', controller.search);
 router.post('/add', controller.add);
+router.post('/remove', controller.remove);
 
 module.exports = router;

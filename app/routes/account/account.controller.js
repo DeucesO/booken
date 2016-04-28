@@ -57,6 +57,7 @@ module.exports = {
                     async.forEachOf(user.borrowing, function (book, index, callback) {
                         googleBooks.search(book.isbn, { field: 'isbn' }, function (err, result) {
                             if (result) {
+                                result[0].book = book;
                                 googleResultsBorrowing.push(result[0]);
                             }
                             callback();
